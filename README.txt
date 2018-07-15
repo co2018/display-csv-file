@@ -23,3 +23,7 @@ Project stages :
     - import framework, read csv file, return an html table.
     - run example.sh to check the results.
 
+2 - Prepare an html page :
+    - create head and body, add html table above, write it to a file.
+    - run example.sh and check the results in "display-csv-file.html".
+
