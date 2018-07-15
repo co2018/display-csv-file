@@ -13,6 +13,7 @@ Ressources :
 - display-csv-file.py : code.
 - example.sh          : run this script to see an example of use.
 - csv-test-file.csv   : data file used in the example.
+- csv-test-file.css   : style sheet.
 - README.txt          : project overview.
 
 ----------------
