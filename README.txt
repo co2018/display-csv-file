@@ -25,5 +25,9 @@ Project stages :
 
 2 - Prepare an html page :
     - create head and body, add html table above, write it to a file.
-    - run example.sh and check the results in "display-csv-file.html".
+    - run example.sh and open "display-csv-file.html" in a web browser.
+
+3 - Add css :
+    - add class properties to each table cell value, add css ref to html page.
+    - run example.sh and open "display-csv-file.html" in a web browser.
 

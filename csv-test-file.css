@@ -1,0 +1,4 @@
+﻿table { border-collapse: collapse; }
+table, th, td { border: 1px solid black; }
+th { background-color: black; color: white; text-align: center; }
+.distance, .revolution, .eccentricity, .inclination { text-align: right; }

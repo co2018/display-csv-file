@@ -5,7 +5,7 @@
 import sys  # System-specific parameters and functions
 import csv  # CSV File Reading and Writing
 # html framework from https://pypi.org/project/htmltag/
-from htmltag import HTML, html, head, title, \
+from htmltag import HTML, html, head, title, link, \
     body, h1, table, tbody, tr, th, td
 
 
@@ -29,15 +29,16 @@ def getHtmlTableFromCsvFile(filePath):
         for row in fReader:
             myRow = tr()
             for col in fReader.fieldnames:
-                myRow = myRow.append(td(HTML(row[col])))
+                myRow = myRow.append(td(HTML(row[col]), _class=col))
             mytbody = mytbody.append(myRow)
     return table(mytbody)
 
 
-def getHtmlPageFromCsvFile(filePath):
+def getHtmlPageFromCsvFile(filePath, css):
     """ Prepare a html page including a table """
     myHtml = html(
         head(
+            link(' ', rel='stylesheet', type='text/css', href=css),
             title=filePath
             )
         )
@@ -47,21 +48,20 @@ def getHtmlPageFromCsvFile(filePath):
             getHtmlTableFromCsvFile(filePath),
             )
         )
-
-    with open('display-csv-file.html', 'w') as f:
-        f.write('<!DOCTYPE html>')
-        f.write(myHtml)
+    return myHtml
 
 
 # Main
 
 if __name__ == '__main__':
 
-    usage = 'Usage : python3 {} csv-file'.format(sys.argv[0])
+    usage = 'Usage : python3 {} csv-file css-file'.format(sys.argv[0])
 
     # Check parameters
-    assert len(sys.argv) == 2, usage
+    assert len(sys.argv) == 3, usage
 
     # Generate html file
-    getHtmlPageFromCsvFile(sys.argv[1])
-
+    outfile = 'display-csv-file.html'
+    with open(outfile, 'w') as f:
+        f.write('<!DOCTYPE html>')
+        f.write(getHtmlPageFromCsvFile(sys.argv[1], sys.argv[2]))
