@@ -2,8 +2,9 @@
 # display-csv-file project.
 # Display a csv file in a web browser.
 
-import sys  # System-specific parameters and functions
-import csv  # CSV File Reading and Writing
+import sys         # System-specific parameters and functions
+import csv         # CSV File Reading and Writing
+import webbrowser  # Convenient Web-browser controller
 # html framework from https://pypi.org/project/htmltag/
 from htmltag import HTML, html, head, title, link, \
     body, h1, table, tbody, tr, th, td
@@ -34,7 +35,7 @@ def getHtmlTableFromCsvFile(filePath):
     return table(mytbody)
 
 
-def getHtmlPageFromCsvFile(filePath, css):
+def getHtmlPageFromCsvFile(filePath, css, title):
     """ Prepare a html page including a table """
     myHtml = html(
         head(
@@ -44,7 +45,7 @@ def getHtmlPageFromCsvFile(filePath, css):
         )
     myHtml = myHtml.append(
         body(
-            h1(filePath),
+            h1(title),
             getHtmlTableFromCsvFile(filePath),
             )
         )
@@ -55,13 +56,15 @@ def getHtmlPageFromCsvFile(filePath, css):
 
 if __name__ == '__main__':
 
-    usage = 'Usage : python3 {} csv-file css-file'.format(sys.argv[0])
+    usage = 'Usage : python3 {} csv-file css-file title'.format(sys.argv[0])
 
     # Check parameters
-    assert len(sys.argv) == 3, usage
+    assert len(sys.argv) == 4, usage
 
-    # Generate html file
+    # Generate and display html file
     outfile = 'display-csv-file.html'
     with open(outfile, 'w') as f:
         f.write('<!DOCTYPE html>')
-        f.write(getHtmlPageFromCsvFile(sys.argv[1], sys.argv[2]))
+        f.write(getHtmlPageFromCsvFile(sys.argv[1], sys.argv[2], sys.argv[3]))
+    webbrowser.open(outfile)
+

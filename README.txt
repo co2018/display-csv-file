@@ -31,3 +31,6 @@ Project stages :
     - add class properties to each table cell value, add css ref to html page.
     - run example.sh and open "display-csv-file.html" in a web browser.
 
+4 - Add title, start the web browser :
+    - run example.sh that opens "display-csv-file.html" in a web browser.
+

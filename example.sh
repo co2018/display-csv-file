@@ -1,2 +1,2 @@
-python3 display-csv-file.py csv-test-file.csv csv-test-file.css
+python3 display-csv-file.py csv-test-file.csv csv-test-file.css "Planets: Orbital Properties"
 
